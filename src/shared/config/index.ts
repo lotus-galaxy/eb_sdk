@@ -35,7 +35,7 @@ export const configData: ConfigData = {
       slothtyRugsurance: '0x73063E236EadC1e511FbE7313C6D8C5c651009E9',
       bundle: '0x40874F18922267cc2Ca7933828594aB5078C1065',
       cnsusd: '0xCF92513AA42bFf5cae6f28Ed5c4a108D9a328233',
-      gaslessListing: '0x523d6f30c4aaca133daad97ee2a0c48235bff137'
+      gaslessListing: '0x523d6f30c4aaca133daad97ee2a0c48235bff137',
     },
   },
   [Environment.development]: {
@@ -66,7 +66,7 @@ export const configData: ConfigData = {
       slothtyRugsurance: '0x73063E236EadC1e511FbE7313C6D8C5c651009E9',
       bundle: '0x40874F18922267cc2Ca7933828594aB5078C1065',
       cnsusd: '0xCF92513AA42bFf5cae6f28Ed5c4a108D9a328233',
-      gaslessListing: '0x523d6f30c4aaca133daad97ee2a0c48235bff137'
+      gaslessListing: '0x523d6f30c4aaca133daad97ee2a0c48235bff137',
     },
   },
   [Environment.testnet]: {

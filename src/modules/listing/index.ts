@@ -16,7 +16,6 @@ export class ListingModule {
   }
 
   private async upsertListings(listings: ListingParams[]) {
-
     // listings.forEach(listing => {
     //   if(typeof listing.collectionAddress !== 'string' || typeof listing.tokenId !== 'string' ||typeof listing.price !== 'number' ||typeof listing.expirationDate !== 'number') throw new Error();
     // })
@@ -74,10 +73,9 @@ export class ListingModule {
   }
 
   public async cancelListing(listingIds: string[]) {
-
-    listingIds.forEach(id => {
-      if(typeof id !== 'string') throw new Error();
-    })
+    listingIds.forEach((id) => {
+      if (typeof id !== 'string') throw new Error();
+    });
 
     const { data: orders } = await CMSService.delete('gasless-listing', { params: { listingIds } });
 
@@ -87,12 +85,12 @@ export class ListingModule {
   }
 
   public async purchaseListings(listingIds: string[]) {
-    listingIds.forEach(id => {
-      if(typeof id !== 'string') throw new Error();
-    })
+    listingIds.forEach((id) => {
+      if (typeof id !== 'string') throw new Error();
+    });
 
     const listingsResponse = await this.getListingsById(listingIds);
-    const cartPrice = listingsResponse.data.listings.reduce((p:number, n:any) => p + parseInt(n.price, 10), 0);
+    const cartPrice = listingsResponse.data.listings.reduce((p: number, n: any) => p + parseInt(n.price, 10), 0);
 
     const buyContract = ContractService.getContract(Contract.SHIP);
     const price = ethers.utils.parseEther(`${cartPrice}`);
@@ -194,18 +192,17 @@ export class ListingModule {
   }
 
   public async getListingsById(listingIds: string[]) {
+    const ids = listingIds.reduce((list, currentId) => {
+      return `${currentId},${list}`;
+    }, '');
 
-    const ids = listingIds.reduce((list, currentId)=> {
-      return `${currentId},${list}`
-    }, '')
-    
     const query = {
       state: ListingState.ACTIVE,
       page: 1,
       pageSize: 1000,
       sortBy: 'listingId',
       direction: 'desc',
-      listingId: ids
+      listingId: ids,
     };
 
     return APIService.get('listings', { params: query });

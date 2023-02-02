@@ -112,6 +112,6 @@ describe('Listing', () => {
 
   it('should return a one string', async () => {
     let sdk = new EbisusBaySdk({ environment: 'testnet' });
-    const list = sdk.getListingsById(['123','456'])
+    const list = sdk.getListingsById(['123', '456']);
   });
 });
