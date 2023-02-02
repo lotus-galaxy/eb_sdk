@@ -1,6 +1,6 @@
 {
-  "name": "eb-market",
-  "version": "1.0.3",
+  "name": "@ebisusbay/core",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
