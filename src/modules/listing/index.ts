@@ -16,6 +16,11 @@ export class ListingModule {
   }
 
   private async upsertListings(listings: ListingParams[]) {
+
+    listings.forEach(listing => {
+      if(typeof listing.collectionAddress !== 'string' || typeof listing.tokenId !== 'string' ||typeof listing.price !== 'number' ||typeof listing.expirationDate !== 'number') throw new Error();
+    })
+
     const pendingListings: ListingInterface[] = await Promise.all(
       listings.map(async (listing) => {
         const { data: nft } = await APIService.get('nft', {
@@ -69,6 +74,11 @@ export class ListingModule {
   }
 
   public async cancelListing(listingIds: string[]) {
+
+    listingIds.forEach(id => {
+      if(typeof id !== 'string') throw new Error();
+    })
+
     const { data: orders } = await CMSService.delete('gasless-listing', { params: { listingIds } });
 
     const ship = ContractService.getContract(Contract.SHIP);
@@ -77,6 +87,9 @@ export class ListingModule {
   }
 
   public async purchaseListings(listingIds: string[]) {
+    listingIds.forEach(id => {
+      if(typeof id !== 'string') throw new Error();
+    })
 
     const listingsResponse = await this.getListingsById(listingIds);
     const cartPrice = listingsResponse.data.listings.reduce((p:number, n:any) => p + parseInt(n.price, 10), 0);
