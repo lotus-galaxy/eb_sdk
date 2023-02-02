@@ -1,4 +1,4 @@
-import { ethers, Contract } from 'ethers';
+import { Contract } from 'ethers';
 
 import { Contract as ContractEnum, contractDictionary } from '../types';
 import { AuthService } from '.';

@@ -45,7 +45,7 @@ import { EbisusBaySdk }  from 'eb-market/lib';
     {
       tokenId: '1234',
       collectionAddress: '0x0...',
-      price: 1, // CRO
+      price: "1", // CRO
       expirationDate: 12345678 // Seconds
     }
   ]
@@ -66,6 +66,6 @@ import { EbisusBaySdk }  from 'eb-market/lib';
 ### Purchase Listings
 
 ```ts
-  // listingIds: string[]
+  const listingIds: string[] = ['1233', '2233']
   const receipt =  await sdk.purchaseListings(listingIds);
 ```

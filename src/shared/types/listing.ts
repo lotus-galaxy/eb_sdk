@@ -40,7 +40,7 @@ export interface Order {
 
 export interface Listing {
   listingId?: string;
-  price: number;
+  price: string;
   is1155: boolean;
   expirationDate: number;
   sellerSignature?: string;
@@ -55,6 +55,6 @@ export interface Listing {
 export interface ListingParams {
   tokenId: string;
   collectionAddress: string;
-  price: number;
+  price: string;
   expirationDate: number;
 }
