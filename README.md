@@ -15,7 +15,7 @@
 
 
 ```ts
-  import EbisusBaySdk from 'eb-market';
+import { EbisusBaySdk }  from 'eb-market/lib';
 ```
 
 ### Create Instance
