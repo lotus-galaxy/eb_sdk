@@ -23,9 +23,9 @@ describe('EbisusBaySdk', () => {
   });
 
   it('should set the environment specified in the config object', () => {
-    const sdk = new EbisusBaySdk({ environment: Environment.development });
+    const sdk = new EbisusBaySdk({ environment: 'testnet' });
     expect(stubs.setEnvironment).toBeCalled();
-    expect(stubs.setEnvironment).toHaveBeenCalledWith(Environment.development);
+    expect(stubs.setEnvironment).toHaveBeenCalledWith(Environment.testnet);
   });
 
   it('should setup auth service when set provider is called', () => {
@@ -36,7 +36,7 @@ describe('EbisusBaySdk', () => {
       timeout: 5000,
     });
 
-    const sdk = new EbisusBaySdk({ environment: Environment.development });
+    const sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
 
     expect(stubs.init).toBeCalled();

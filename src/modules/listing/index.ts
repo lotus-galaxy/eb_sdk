@@ -76,7 +76,11 @@ export class ListingModule {
     await tx.wait();
   }
 
-  public async purchaseListings(listingIds: string[], cartPrice: number) {
+  public async purchaseListings(listingIds: string[]) {
+
+    const listingsResponse = await this.getListingsById(listingIds);
+    const cartPrice = listingsResponse.data.listings.reduce((p:number, n:any) => p + parseInt(n.price, 10), 0);
+
     const buyContract = ContractService.getContract(Contract.SHIP);
     const price = ethers.utils.parseEther(`${cartPrice}`);
 
@@ -171,6 +175,24 @@ export class ListingModule {
       sortBy: 'listingId',
       direction: 'desc',
       seller: AuthService.getWalletAddress().toLowerCase(),
+    };
+
+    return APIService.get('listings', { params: query });
+  }
+
+  public async getListingsById(listingIds: string[]) {
+
+    const ids = listingIds.reduce((list, currentId)=> {
+      return `${currentId},${list}`
+    }, '')
+    
+    const query = {
+      state: ListingState.ACTIVE,
+      page: 1,
+      pageSize: 1000,
+      sortBy: 'listingId',
+      direction: 'desc',
+      listingId: ids
     };
 
     return APIService.get('listings', { params: query });

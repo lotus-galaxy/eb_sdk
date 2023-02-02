@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
-    "outDir": "./lib/src",
+    "outDir": "./lib",
     "strict": true,
     "baseUrl": "./",
     "paths": {

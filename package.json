@@ -1,5 +1,5 @@
 {
-  "name": "@schwiz/eb-sdk",
+  "name": "market-sdk",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",

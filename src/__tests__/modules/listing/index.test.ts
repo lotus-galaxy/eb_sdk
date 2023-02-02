@@ -72,7 +72,7 @@ describe('Listing', () => {
   });
 
   it('should create a listing and not have to cancel anything', async () => {
-    let sdk = new EbisusBaySdk({ environment: Environment.testnet });
+    let sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
 
     stubs.spyApiGet.mockImplementation(onlyCreateListingRequest);
@@ -83,7 +83,7 @@ describe('Listing', () => {
   });
 
   it('should cancel the listing and create a new one', async () => {
-    let sdk = new EbisusBaySdk({ environment: Environment.testnet });
+    let sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
 
     stubs.spyApiGet.mockImplementation(upsertListingRequest);
@@ -95,7 +95,7 @@ describe('Listing', () => {
   });
 
   it('should make a request to cancel a listing', async () => {
-    let sdk = new EbisusBaySdk({ environment: Environment.testnet });
+    let sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
 
     await sdk.cancelListing(['1111']);
@@ -103,10 +103,15 @@ describe('Listing', () => {
   });
 
   it('should request the api token to make the purchase', async () => {
-    let sdk = new EbisusBaySdk({ environment: Environment.testnet });
+    let sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
 
-    await sdk.purchaseListings(['1111'], 1);
+    await sdk.purchaseListings(['1111']);
     expect(stubs.spyCmsGet).toHaveBeenCalledTimes(1);
+  });
+
+  it('should return a one string', async () => {
+    let sdk = new EbisusBaySdk({ environment: 'testnet' });
+    const list = sdk.getListingsById(['123','456'])
   });
 });

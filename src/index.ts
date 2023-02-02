@@ -6,16 +6,18 @@ import { ConfigService, AuthService, CMSService, APIService } from './shared/ser
 
 import { UserProvider } from './shared/types';
 
+type Env = 'mainnet' | 'testnet'
+
 interface SDKConfig {
-  environment: Environment;
+  environment: Env;
 }
 
 export class EbisusBaySdk extends ListingModule {
-  constructor(config: SDKConfig = { environment: Environment.production }) {
+  constructor(config: SDKConfig = { environment: 'mainnet' }) {
     super();
 
     if (config.environment) {
-      ConfigService.setEnvironment(config.environment);
+      ConfigService.setEnvironment(config.environment === 'mainnet'? Environment.production : Environment.testnet);
       CMSService.reinitialize();
       APIService.reinitialize();
     }
