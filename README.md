@@ -4,7 +4,7 @@
 ## Installation
 
 ```sh
-  npm i --save @schwiz/eb-sdk    
+  npm i --save eb-market    
 ```
 
 ## Usage
@@ -15,7 +15,7 @@
 
 
 ```ts
-  import { EbisusBaySdk } from '@schwiz/eb-sdk/lib/src';
+  import EbisusBaySdk from 'eb-market';
 ```
 
 ### Create Instance

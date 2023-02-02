@@ -17,9 +17,9 @@ export class ListingModule {
 
   private async upsertListings(listings: ListingParams[]) {
 
-    listings.forEach(listing => {
-      if(typeof listing.collectionAddress !== 'string' || typeof listing.tokenId !== 'string' ||typeof listing.price !== 'number' ||typeof listing.expirationDate !== 'number') throw new Error();
-    })
+    // listings.forEach(listing => {
+    //   if(typeof listing.collectionAddress !== 'string' || typeof listing.tokenId !== 'string' ||typeof listing.price !== 'number' ||typeof listing.expirationDate !== 'number') throw new Error();
+    // })
 
     const pendingListings: ListingInterface[] = await Promise.all(
       listings.map(async (listing) => {

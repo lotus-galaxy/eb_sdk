@@ -1,3 +1,3 @@
-import { EbisusBaySdk } from './lib';
+const  EbisusBaySdk  = require('./lib')
 
-export default EbisusBaySdk;
+export default EbisusBaySdk.EbisusBaySdk;
