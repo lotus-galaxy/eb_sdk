@@ -4,7 +4,7 @@
 ## Installation
 
 ```sh
-  npm i --save eb-market    
+  npm i --save @ebisusbay/core    
 ```
 
 ## Usage
@@ -15,7 +15,7 @@
 
 
 ```ts
-import { EbisusBaySdk }  from 'eb-market/lib';
+import { EbisusBaySdk }  from '@ebisusbay/core/lib';
 ```
 
 ### Create Instance

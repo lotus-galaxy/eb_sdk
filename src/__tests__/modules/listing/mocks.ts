@@ -17,7 +17,7 @@ export const testListingExample: ListingParams[] = [
   {
     tokenId: '427',
     collectionAddress: '0x000732Ddc0f7208b2400944d4a7296bc001aE866',
-    price: 1,
+    price: '1',
     expirationDate: 1000000000,
   },
 ];
