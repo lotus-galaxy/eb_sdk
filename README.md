@@ -1,4 +1,3 @@
-# Ebisu's Bay SDK
 
 ## Documentation
 This documentation offers an array of functionalities for engaging with the EbisusBay Marketplace.
@@ -8,7 +7,6 @@ https://docs.ebisusbay.com
 
 <br/>
 
----
 
 <br/>
 
@@ -25,7 +23,7 @@ If you're seeking clarification on the response, the official documentation list
 
 <br/>
 
----
+
 <br/>
 
 ## Installation
