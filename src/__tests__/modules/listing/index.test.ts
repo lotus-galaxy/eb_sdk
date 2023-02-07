@@ -1,5 +1,4 @@
 import { EbisusBaySdk } from '../../../index';
-import { Environment } from '../../../shared/types';
 import { CMSService, APIService, AuthService, ContractService } from '../../../shared/services';
 import { provider, testListingExample, userAddress, onlyCreateListingRequest, upsertListingRequest } from './mocks';
 
@@ -16,15 +15,15 @@ describe('Listing', () => {
     );
 
     stubs.spyCmsGet = jest.spyOn(CMSService, 'get');
-    stubs.spyCmsPost.mockReturnValue(
-      Promise.resolve({
+    stubs.spyCmsGet.mockReturnValue(
+      Promise.resolve({data:{
         status: 200,
         data: { signature: '0x000000000', orderData: {}, feeAmount: 0 },
-      }),
+      }}),
     );
 
     stubs.spyCmsDelete = jest.spyOn(CMSService, 'delete');
-    stubs.spyCmsPost.mockReturnValue(
+    stubs.spyCmsDelete.mockReturnValue(
       Promise.resolve({
         status: 200,
         data: {},
@@ -105,6 +104,7 @@ describe('Listing', () => {
   it('should request the api token to make the purchase', async () => {
     let sdk = new EbisusBaySdk({ environment: 'testnet' });
     sdk.setProvider(userAddress, provider);
+    stubs.spyApiGet.mockImplementation(onlyCreateListingRequest);
 
     await sdk.purchaseListings(['1111']);
     expect(stubs.spyCmsGet).toHaveBeenCalledTimes(1);
